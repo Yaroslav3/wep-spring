@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Index</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default" style="margin-top: 45px">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Login with Username</h3>
+                </div>
+                <div class="panel-body">
+
+                    <div th:if="${logout}">
+                        <div class="alert alert-info" role="alert">You've been logged out successfully.</div>
+                    </div>
+                    <div th:if="${error}">
+                        <div class="alert alert-danger" role="alert">Invalid Username or Password!</div>
+                    </div>
+
+                    <form action="#" th:action="@{/login}" method="post">
+                        <input name="${_csrf.parameterName}" value="${_csrf.token}" type="hidden"/>
+                        <div class="form-row align-items-center">
+                            <div class="col-auto">
+                                <label for="username" class="sr-only">Username</label>
+                                <input type="text" name="username" class="form-control mb-2" id="username"
+                                       placeholder="username"/>
+                            </div>
+                            <div class="col-auto">
+                                <label class="sr-only" for="password">Password</label>
+                                <div class="input-group mb-2">
+                                    <br/>
+                                    <input type="password" name="password" class="form-control" id="password" placeholder="password"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary mb-2">Log in</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
